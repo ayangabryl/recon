@@ -1,38 +1,35 @@
 # Recon
 
-URL → research → `DESIGN.md` → build. Screenshot-backed design specs any AI coding agent can build from.
+[![GitHub](https://img.shields.io/github/stars/ayangabryl/recon?style=social)](https://github.com/ayangabryl/recon)
 
-## Install the skill (any agent)
+**Recon any URL** into a screenshot-backed blueprint your agent can build from — faithful **mirror**, original **remix**, or research-only **scout**.
 
-Works with **Cursor**, **Claude Code**, **Codex**, **Windsurf**, and other agents that support the [open agent skills](https://skills.sh/) ecosystem.
+**Repo:** [github.com/ayangabryl/recon](https://github.com/ayangabryl/recon)
+
+## Install
+
+Works with **Cursor**, **Claude Code**, **Codex**, **Windsurf**, and other [agent skills](https://skills.sh/) hosts.
 
 ```bash
-npx skills add <owner>/recon --skill recon
+npx skills add ayangabryl/recon --skill recon
 ```
 
-Examples:
+More options:
 
 ```bash
-# After you publish this repo to GitHub (replace with your username/org):
-npx skills add your-username/recon --skill recon
+# Global install (all projects on this machine)
+npx skills add ayangabryl/recon --skill recon -g
 
-# Install globally (all projects on this machine):
-npx skills add your-username/recon --skill recon -g
+# Every agent target the CLI supports
+npx skills add ayangabryl/recon --skill recon --agent '*' -y
 
-# Install every agent target the CLI supports:
-npx skills add your-username/recon --skill recon --agent '*' -y
-
-# Local development (from a clone of this repo):
+# Local development (from a clone of this repo)
+git clone https://github.com/ayangabryl/recon.git
+cd recon
 npx skills add . --skill recon -y
 ```
 
-Browse skills: [skills.sh](https://skills.sh/)
-
-> **Note:** `clone-from-url` and `urlforge` were renamed to **recon**. Old names install redirect stubs.
-
-### Peer dependency — motion
-
-Builds use [transitions.dev](https://transitions.dev) for CSS motion (not hand-rolled keyframes):
+**Motion peer dependency** (for builds with CSS choreography):
 
 ```bash
 npx skills add Jakubantalik/transitions.dev
@@ -43,33 +40,16 @@ npx skills add Jakubantalik/transitions.dev
 | Mode | What you get |
 |------|----------------|
 | **scout** | Research only — `RESEARCH.md` + `DESIGN.md`, no app code |
-| **mirror** | Faithful clone — full compare gates before ship |
+| **mirror** | Faithful clone — compare gates required before ship |
 | **remix** | Same design language, your brand — no pixel-diff blocking |
 
-## What the skill does
+## What it does
 
 1. **Navigate** to a reference URL with a real browser (not `curl`)
-2. **Screenshot** full page + sections — agent is the photographer when the user sends no images
-3. **Audit** spacing, motion, responsive layouts, intro sequences via CDP / Playwright
+2. **Screenshot** full page, sections, responsive breakpoints, intro sequences
+3. **Audit** spacing, motion, behaviors, and UI chrome via CDP / Playwright
 4. **Write** `docs/research/{slug}/RESEARCH.md` + `DESIGN.md`
-5. **Build** (optional) — implement from `DESIGN.md`; **mirror** mode verifies against reference
-
-## Skill source
-
-```
-skills/recon/
-├── SKILL.md       # Main workflow (agent-agnostic)
-├── reference.md   # CDP scripts, templates
-├── examples.md    # wise.design walkthrough
-├── agents.md      # Per-agent browser tool mapping
-└── scripts/       # capture, compare, responsive-audit, intro-sequence, …
-```
-
-Cursor project copy (optional symlink after install):
-
-```
-.cursor/skills/recon/
-```
+5. **Build** (optional) — implement from `DESIGN.md`; **mirror** mode verifies against the reference
 
 ## Example prompts
 
@@ -85,21 +65,34 @@ recon mirror https://wise.design — one-shot clone
 recon remix https://wise.design — carousel vibe, my SaaS brand
 ```
 
-## This repo
+## Repo layout
 
 | Path | Purpose |
 |------|---------|
-| `skills/recon/` | **Published skill** — install with `npx skills add` |
-| `skills/urlforge/`, `skills/clone-from-url/` | Deprecated redirects → use `recon` |
-| `docs/research/` | Example research output (wise-design) |
-| `web/` | Next.js builds from research specs |
+| `skills/recon/` | Published skill — `SKILL.md`, scripts, templates |
+| `docs/research/wise-design/` | Example research + compare artifacts |
+| `web/` | Next.js demo — `/wise` clone from research spec |
 
-## Publish your fork
+```
+skills/recon/
+├── SKILL.md          # Main workflow
+├── reference.md      # CDP snippets + doc templates
+├── examples.md       # wise.design walkthrough
+├── agents.md         # Per-agent browser tool mapping
+└── scripts/          # capture, compare, responsive-audit, intro-sequence, …
+```
 
-1. Push this repo to GitHub
-2. Users run `npx skills add <owner>/recon --skill recon`
-3. Optional: submit to [skills.sh](https://skills.sh/) leaderboard (happens via ecosystem indexing)
+## Demo
+
+From the `web/` directory:
+
+```bash
+npm install
+npm run dev
+```
+
+Open [localhost:3000/wise](http://localhost:3000/wise) for the wise.design mirror build.
 
 ## License
 
-MIT — skill instructions are plain markdown; example research and web code follow repo license.
+MIT
