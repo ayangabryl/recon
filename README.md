@@ -4,6 +4,8 @@
 
 **Recon any URL** into a screenshot-backed blueprint your agent can build from — faithful **mirror**, original **remix**, or research-only **scout**.
 
+Runs in **your project**. Output goes to `docs/research/{slug}/` in whatever repo you're working in.
+
 **Repo:** [github.com/ayangabryl/recon](https://github.com/ayangabryl/recon)
 
 ## Install
@@ -42,8 +44,8 @@ npx skills add . --skill recon -y
 1. **Navigate** to a reference URL with a real browser (not `curl`)
 2. **Screenshot** full page, sections, responsive breakpoints, intro sequences
 3. **Audit** spacing, motion, behaviors, and UI chrome via CDP / Playwright
-4. **Write** `docs/research/{slug}/RESEARCH.md` + `DESIGN.md`
-5. **Build** (optional) — implement from `DESIGN.md`; **mirror** mode verifies against the reference
+4. **Write** `docs/research/{slug}/RESEARCH.md` + `DESIGN.md` in your repo
+5. **Build** (optional) — implement from `DESIGN.md` in your app; **mirror** mode verifies against the reference
 
 ## Example prompts
 
@@ -63,29 +65,10 @@ recon remix https://wise.design — carousel vibe, my SaaS brand
 
 | Path | Purpose |
 |------|---------|
-| `skills/recon/` | Published skill — `SKILL.md`, scripts, templates |
-| `docs/research/wise-design/` | Example research + compare artifacts |
-| `web/` | Next.js demo — `/wise` clone from research spec |
-
-```
-skills/recon/
-├── SKILL.md          # Main workflow
-├── reference.md      # CDP snippets + doc templates
-├── examples.md       # wise.design walkthrough
-├── agents.md         # Per-agent browser tool mapping
-└── scripts/          # capture, compare, responsive-audit, intro-sequence, …
-```
-
-## Demo
-
-From the `web/` directory:
-
-```bash
-npm install
-npm run dev
-```
-
-Open [localhost:3000/wise](http://localhost:3000/wise) for the wise.design mirror build.
+| `skills/recon/SKILL.md` | Main workflow |
+| `skills/recon/reference.md` | CDP scripts, doc templates, motion CSS |
+| `skills/recon/agents.md` | Per-agent browser tool mapping |
+| `skills/recon/scripts/` | capture, compare, responsive-audit, intro-sequence, … |
 
 ## License
 

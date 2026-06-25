@@ -99,7 +99,7 @@ docs/research/{slug}/
 
 **`DESIGN.md` is the only file agents need to build.** Spacing and motion are sections inside it — not separate files.
 
-**Slug:** hostname without `www` (e.g. `vocorize.com` → `vocorize`).
+**Slug:** hostname without `www` (e.g. `example.com` → `example-com` or `example`).
 
 ## Research workflow
 
@@ -181,7 +181,7 @@ Measure motion via CDP → write **Motion** section in `DESIGN.md`.
 
 **Rule:** Only implement motion the audit finds.
 
-Map each pattern to CSS snippets in [reference.md](./reference.md) (see `web/src/styles/transitions-dev.css` in this repo for working examples):
+Map each pattern to CSS snippets in [reference.md](./reference.md) (Motion CSS snippets section):
 
 | UI pattern | Snippet class |
 |------------|---------------|
@@ -199,7 +199,7 @@ Map each pattern to CSS snippets in [reference.md](./reference.md) (see `web/src
 
 **Build procedure (when motion exists):**
 
-1. Copy relevant tokens + snippet CSS into the project (from reference.md or `web/src/styles/transitions-dev.css`).
+1. Copy relevant tokens + snippet CSS into the user's project (from reference.md).
 2. Paste CSS **verbatim** — do not collapse to `transition: all`.
 3. Wire documented hooks (`.t-text-swap`, `.t-tabs`, `aria-selected`, …).
 4. Add JS orchestration only when the pattern requires it.
@@ -456,12 +456,7 @@ Default stack: **Next.js + Tailwind**, Google Fonts when identified.
 - **Never** commit scraped proprietary assets as your own
 - **Overwrite guard:** ask before overwriting existing `docs/research/{slug}/`
 
-## Examples
-
-See [examples.md](./examples.md) — wise.design, vocorize.com.
-
 ## Additional resources
 
 - [agents.md](./agents.md) — browser tools per agent
-- [reference.md](./reference.md) — CDP scripts, templates
-- [examples.md](./examples.md) — worked examples
+- [reference.md](./reference.md) — CDP scripts, templates, motion CSS
