@@ -75,7 +75,7 @@ docs/research/{slug}/screenshots/
 
 ## Post-build verification
 
-1. Start dev server (`npm run dev`, etc.)
-2. Navigate to localhost in the same browser tool
+1. Start the **user's** dev server from their app root (`npm run dev`, `pnpm dev`, etc.) — not a invented `web/` folder
+2. Navigate to localhost (use their port if non-default)
 3. Screenshot → `docs/research/{slug}/screenshots/build/`
 4. Compare to reference shots

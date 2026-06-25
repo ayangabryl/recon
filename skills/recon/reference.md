@@ -1,5 +1,15 @@
 # Recon — Templates & CDP snippets
 
+## Project guard (before any file write)
+
+```
+1. SCAN repo for package.json, app root, existing DESIGN.md (any path)
+2. NEVER create web/, clone/, or duplicate package.json
+3. User DESIGN.md → read-only unless user says "merge" or "overwrite"
+4. Reference spec → docs/research/{slug}/DESIGN.md only
+5. IF docs/research/{slug}/ exists with user edits → ASK before overwrite
+```
+
 ## Screenshot gate (run before DESIGN.md or build)
 
 ```

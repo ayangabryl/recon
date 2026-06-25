@@ -1,6 +1,6 @@
 ---
 name: recon
-description: Recon any URL into a buildable design blueprint — faithful clone or original remix. Captures browser screenshots, CDP tokens, spacing/motion/responsive audits, RESEARCH.md, and DESIGN.md. Modes mirror (pixel-faithful), remix (same vibe, your product), scout (research only). Triggers on "recon", "recon this site", "clone this site", "remix this design", "same vibe my copy", "research this URL", "DESIGN.md from URL", "match this design", "build from reference". Requires a real browser — not curl.
+description: Recon any URL into a buildable design blueprint in the user's existing project — no web/ scaffold. Faithful mirror, original remix, or scout-only research. Respects existing DESIGN.md and repo layout. Captures browser screenshots, CDP tokens, spacing/motion/responsive audits. Output in docs/research/{slug}/. Triggers on "recon", "recon this site", "clone this site", "remix this design", "same vibe my copy", "research this URL", "match this design". Requires a real browser — not curl.
 ---
 
 # Recon
@@ -16,6 +16,74 @@ Record the active mode at the top of `RESEARCH.md`: `mode: mirror | remix | scou
 ```bash
 npx skills add ayangabryl/recon --skill recon
 ```
+
+## Project integration (read first)
+
+Recon runs **inside the user's repo**. Never impose a template layout.
+
+### Do not create `web/`
+
+- **Never** scaffold `web/`, `clone/`, or a parallel app folder unless the user explicitly asks for a new project.
+- **Never** assume the app lives at repo root — detect it first.
+
+### Detect the user's project (before research or build)
+
+Scan the workspace **before** writing code or choosing paths:
+
+| Signal | Likely app root |
+|--------|-----------------|
+| `package.json` + `next.config.*` | Directory containing those files |
+| `src/app/` or `app/` | Next.js App Router — build under that tree |
+| `src/pages/` or `pages/` | Next.js Pages Router |
+| `vite.config.*` + `src/` | Vite — components under `src/` |
+| Monorepo (`apps/*`, `packages/*`) | Ask which app, or use the path the user names |
+
+**Procedure:**
+
+1. Find existing `package.json`, framework config, and where routes/pages live.
+2. Use **that** directory for `npm run dev`, new routes, and components.
+3. Match existing conventions: `src/` vs flat, `@/` aliases, CSS modules vs Tailwind, existing component folders.
+4. Reuse existing primitives (Button, Tabs, layout shells) when building — do not duplicate a design system the project already has.
+
+### Research output paths
+
+Default research artifacts:
+
+```
+docs/research/{slug}/
+```
+
+If the user already uses a different docs layout (`design/`, `specs/`, `.cursor/docs/`), **follow their convention** and record the chosen path in `RESEARCH.md`.
+
+Recon research files (`RESEARCH.md`, reference `DESIGN.md` for the **URL**) always live **under the research folder** — not at repo root — unless the user explicitly points elsewhere.
+
+### Respect existing `DESIGN.md` (critical)
+
+The user may already have a project-level `DESIGN.md` (repo root, `docs/`, `design/`). **That file is authoritative for their product.**
+
+| File | Purpose | Overwrite? |
+|------|---------|------------|
+| User's `DESIGN.md` | Their product design system / brand | **Never overwrite** without explicit permission |
+| `docs/research/{slug}/DESIGN.md` | Build spec **for the reference URL** | Create/update per recon run |
+
+**Before writing any `DESIGN.md`:**
+
+1. **Search** the repo: `DESIGN.md`, `design.md`, `docs/**/DESIGN.md`.
+2. If a **user product** `DESIGN.md` exists:
+   - **Read it fully** — colors, type, spacing, components are the build contract for *their* app.
+   - Write reference research to `docs/research/{slug}/DESIGN.md` only.
+   - In **remix** mode: merge reference patterns into implementation using the user's tokens from their `DESIGN.md`, not the reference site's brand.
+   - In **mirror** mode: still keep reference spec in `docs/research/{slug}/` — implement the clone in an isolated route/section without replacing their design system doc.
+3. If `docs/research/{slug}/DESIGN.md` **already exists** from a prior recon:
+   - **Ask** before overwriting, or append a dated `## Recon update (YYYY-MM-DD)` section.
+   - Preserve user edits inside that file.
+4. If the user says "update my DESIGN.md" — **merge** reference findings as a new section (e.g. `## Reference: wise.design`) rather than replacing unrelated content.
+
+### Build placement
+
+- Add routes/pages in the **existing** app (`src/app/(marketing)/…`, `pages/…`, etc.).
+- Add components next to existing ones (`components/`, `src/components/`, feature folders).
+- Do **not** create a second Next app or duplicate `package.json` at repo root.
 
 ## Screenshot policy (default)
 
@@ -373,7 +441,21 @@ Save `docs/research/{slug}/ui-chrome.json`. Record in `DESIGN.md` **Components**
 
 ### Step 5 — Write docs
 
-Templates: [reference.md](./reference.md). **`DESIGN.md`** sections: Summary, Colors, Typography, Spacing, Motion, **Behaviors** (when interactions exist), Components, Build checklist.
+Templates: [reference.md](./reference.md).
+
+**Write to `docs/research/{slug}/` only** — not the user's root `DESIGN.md` unless they explicitly ask to merge.
+
+- **`RESEARCH.md`** — verdict, findings, creative direction (remix), link to research `DESIGN.md`
+- **`docs/research/{slug}/DESIGN.md`** — reference build spec: Summary, Colors, Typography, Spacing, Motion, **Behaviors**, Components, Build checklist
+
+If the user has an existing product `DESIGN.md`, add a line in `RESEARCH.md`:
+
+```markdown
+## User design system
+See [../../DESIGN.md](../../DESIGN.md) — remix builds must use these tokens.
+```
+
+(Adjust relative path to wherever their file lives.)
 
 ### Step 6 — Release browser session
 
@@ -428,17 +510,19 @@ Tests: chrome sizes, hover expand, **footer text rotator** (≥2 strings), **rap
 
 ## Build workflow (when requested — mirror or remix)
 
-1. Confirm mode in `RESEARCH.md` (`mirror` or `remix`)
-2. Read `DESIGN.md` + all screenshots
-3. **Mirror:** match layout, chrome, motion to reference. **Remix:** match **language** only — use **Substitutions** table
-4. Use **fixed rhythm tokens**; let section height vary naturally
-5. Build section-by-section
-6. Motion via CSS/GSAP snippets (Step 3c)
-7. **Icons & emoji:** CDP-check each slot. Use emoji **only** when reference `innerHTML` contains emoji
-8. **Mirror only:** Step 7 compare gates — fix until pass
-9. **Remix:** optional compare for QA; dev-server screenshot vs your design intent
+1. **Detect project** — app root, framework, existing `DESIGN.md`, component conventions (see Project integration)
+2. Confirm mode in `docs/research/{slug}/RESEARCH.md` (`mirror` or `remix`)
+3. Read `docs/research/{slug}/DESIGN.md` + screenshots; **also read user's `DESIGN.md`** if present
+4. **Remix:** implement reference **patterns** using **user** tokens from their `DESIGN.md`
+5. **Mirror:** match reference layout in an existing route — spec stays in `docs/research/{slug}/`
+6. Use **fixed rhythm tokens** from the appropriate spec; let section height vary naturally
+7. Build section-by-section in the **existing** app tree — no new `web/` folder
+8. Motion via CSS/GSAP snippets (Step 3c) — colocate styles with project's CSS approach
+9. **Icons & emoji:** CDP-check each slot. Use emoji **only** when reference `innerHTML` contains emoji
+10. **Mirror only:** Step 7 compare gates — fix until pass (use user's dev server URL/port)
+11. **Remix:** optional compare for QA
 
-Default stack: **Next.js + Tailwind**, Google Fonts when identified.
+**Stack:** Use whatever the repo already uses (Next, Vite, Remix, etc.). Do not introduce a new framework folder.
 
 ## Fidelity expectations
 
@@ -454,7 +538,10 @@ Default stack: **Next.js + Tailwind**, Google Fonts when identified.
 - **Research before code** unless user explicitly skips
 - **Screenshots are ground truth**
 - **Never** commit scraped proprietary assets as your own
-- **Overwrite guard:** ask before overwriting existing `docs/research/{slug}/`
+- **Never create `web/`** or a parallel app unless the user asks
+- **Respect existing project layout** — detect app root, routes, and components before building
+- **Never overwrite the user's product `DESIGN.md`** — research spec lives in `docs/research/{slug}/`
+- **Overwrite guard:** ask before overwriting existing `docs/research/{slug}/` or any file the user may have edited
 
 ## Additional resources
 

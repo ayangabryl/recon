@@ -4,7 +4,7 @@
 
 **Recon any URL** into a screenshot-backed blueprint your agent can build from — faithful **mirror**, original **remix**, or research-only **scout**.
 
-Runs in **your project**. Output goes to `docs/research/{slug}/` in whatever repo you're working in.
+Runs in **your project** — detects your app structure, never scaffolds `web/`, and won't overwrite your existing `DESIGN.md`.
 
 **Repo:** [github.com/ayangabryl/recon](https://github.com/ayangabryl/recon)
 
@@ -44,8 +44,8 @@ npx skills add . --skill recon -y
 1. **Navigate** to a reference URL with a real browser (not `curl`)
 2. **Screenshot** full page, sections, responsive breakpoints, intro sequences
 3. **Audit** spacing, motion, behaviors, and UI chrome via CDP / Playwright
-4. **Write** `docs/research/{slug}/RESEARCH.md` + `DESIGN.md` in your repo
-5. **Build** (optional) — implement from `DESIGN.md` in your app; **mirror** mode verifies against the reference
+4. **Write** `docs/research/{slug}/RESEARCH.md` + reference `DESIGN.md` (respects your existing `DESIGN.md`)
+5. **Build** (optional) — implement in your existing app tree; **mirror** mode verifies against the reference
 
 ## Example prompts
 
