@@ -55,8 +55,7 @@
 ## Install (any agent)
 
 ```bash
-npx skills add <owner>/recon --skill recon
-npx skills add Jakubantalik/transitions.dev
+npx skills add ayangabryl/recon --skill recon
 ```
 
 ## What good output looks like
@@ -66,5 +65,5 @@ npx skills add Jakubantalik/transitions.dev
 - `DESIGN.md` has measured tokens, not guesses
 - `behaviors.json` + behavior screenshots when site has hover/focus/expand
 - `compare/` folder with reference + clone screenshots and `compare.json` pass (**mirror** mode)
-- Motion uses transitions-dev snippets with reduced-motion guards
+- Motion uses CSS/GSAP snippets with reduced-motion guards
 - Fidelity estimate is honest

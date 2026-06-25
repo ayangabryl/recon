@@ -29,12 +29,6 @@ cd recon
 npx skills add . --skill recon -y
 ```
 
-**Motion peer dependency** (for builds with CSS choreography):
-
-```bash
-npx skills add Jakubantalik/transitions.dev
-```
-
 ## Fidelity modes
 
 | Mode | What you get |

@@ -1,6 +1,6 @@
 ---
 name: recon
-description: Recon any URL into a buildable design blueprint — faithful clone or original remix. Captures browser screenshots, CDP tokens, spacing/motion/responsive audits, RESEARCH.md, and DESIGN.md. Modes mirror (pixel-faithful), remix (same vibe, your product), scout (research only). Triggers on "recon", "recon this site", "clone this site", "remix this design", "same vibe my copy", "research this URL", "DESIGN.md from URL", "match this design", "build from reference". Requires a real browser — not curl. Pairs with transitions-dev for motion.
+description: Recon any URL into a buildable design blueprint — faithful clone or original remix. Captures browser screenshots, CDP tokens, spacing/motion/responsive audits, RESEARCH.md, and DESIGN.md. Modes mirror (pixel-faithful), remix (same vibe, your product), scout (research only). Triggers on "recon", "recon this site", "clone this site", "remix this design", "same vibe my copy", "research this URL", "DESIGN.md from URL", "match this design", "build from reference". Requires a real browser — not curl.
 ---
 
 # Recon
@@ -14,8 +14,7 @@ Record the active mode at the top of `RESEARCH.md`: `mode: mirror | remix | scou
 ## Install
 
 ```bash
-npx skills add <owner>/recon --skill recon
-npx skills add Jakubantalik/transitions.dev   # motion peer dependency
+npx skills add ayangabryl/recon --skill recon
 ```
 
 ## Screenshot policy (default)
@@ -176,18 +175,18 @@ Measure via CDP → write **Spacing** section in `DESIGN.md`. Script: [reference
 
 **Rule:** Separate **fixed rhythm** (repeatable px) from **section gaps** (content-driven). Never guess `mt-[140px]`.
 
-### Step 3c — Motion audit + transitions-dev
+### Step 3c — Motion audit
 
 Measure motion via CDP → write **Motion** section in `DESIGN.md`.
 
 **Rule:** Only implement motion the audit finds.
 
-Map each pattern to the **transitions-dev** skill (`npx skills add Jakubantalik/transitions.dev`):
+Map each pattern to CSS snippets in [reference.md](./reference.md) (see `web/src/styles/transitions-dev.css` in this repo for working examples):
 
-| UI pattern | transitions-dev snippet |
-|------------|-------------------------|
-| Text changes in place (rotating keyword, status) | **text-states-swap** |
-| Segmented control / filter pills / view toggle | **tabs-sliding** |
+| UI pattern | Snippet class |
+|------------|---------------|
+| Text changes in place (rotating keyword, status) | **text-states-swap** (`.t-text-swap`) |
+| Segmented control / filter pills / view toggle | **tabs-sliding** (`.t-tabs`) |
 | Dropdown from trigger | **menu-dropdown** |
 | Modal dialog | **modal** |
 | Number updates | **number-pop-in** |
@@ -195,14 +194,15 @@ Map each pattern to the **transitions-dev** skill (`npx skills add Jakubantalik/
 | Stacked hero lines entering | **texts-reveal** |
 | Loading / streaming label | **shimmer-text** |
 | Hover hint bubble | **tooltip** |
+| Marquee / carousel / GSAP timeline | Document in DESIGN.md; use GSAP or CSS animation |
 | No clear match | Note in DESIGN.md; ask before guessing |
 
-**Install procedure (every build):**
+**Build procedure (when motion exists):**
 
-1. Ensure transitions-dev skill is installed; copy `_root.css` + chosen snippets into project CSS.
+1. Copy relevant tokens + snippet CSS into the project (from reference.md or `web/src/styles/transitions-dev.css`).
 2. Paste CSS **verbatim** — do not collapse to `transition: all`.
 3. Wire documented hooks (`.t-text-swap`, `.t-tabs`, `aria-selected`, …).
-4. Copy JS orchestration from transitions-dev reference files.
+4. Add JS orchestration only when the pattern requires it.
 5. **Keep every `prefers-reduced-motion` guard.**
 
 ### Step 3d — Motion choreography capture (timing)
@@ -331,7 +331,7 @@ Record choreography tokens in `DESIGN.md` — do not guess `duration: 50` withou
 
 **Playwright:** `node skills/recon/scripts/behavior-audit.mjs <url> behaviors.json`
 
-**Build rule:** If `behaviors.json` documents hover-expand, implement it (GSAP or transitions-dev). Do not ship scroll-only when reference pauses/expands on hover.
+**Build rule:** If `behaviors.json` documents hover-expand, implement it (GSAP or CSS). Do not ship scroll-only when reference pauses/expands on hover.
 
 ### Step 3f — UI chrome capture (logo, icon buttons, progress)
 
@@ -433,7 +433,7 @@ Tests: chrome sizes, hover expand, **footer text rotator** (≥2 strings), **rap
 3. **Mirror:** match layout, chrome, motion to reference. **Remix:** match **language** only — use **Substitutions** table
 4. Use **fixed rhythm tokens**; let section height vary naturally
 5. Build section-by-section
-6. Motion via **transitions-dev** snippets (Step 3c)
+6. Motion via CSS/GSAP snippets (Step 3c)
 7. **Icons & emoji:** CDP-check each slot. Use emoji **only** when reference `innerHTML` contains emoji
 8. **Mirror only:** Step 7 compare gates — fix until pass
 9. **Remix:** optional compare for QA; dev-server screenshot vs your design intent

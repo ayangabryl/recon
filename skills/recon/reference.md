@@ -269,7 +269,7 @@ See [DESIGN.md](./DESIGN.md).
 ### Layout | Fixed rhythm | Section gaps | Audit data
 
 ## Motion
-| Layer | Behavior | transitions-dev / GSAP |
+| Layer | Behavior | CSS / GSAP |
 
 ### Choreography (sampled)
 | Token | Value | Source |
@@ -278,7 +278,7 @@ See [DESIGN.md](./DESIGN.md).
 | loop-duration | | calculated |
 | easing | | gsap / constant delta |
 
-### transitions-dev install
+### Motion snippets
 | Pattern | Snippet | Hooks |
 
 ## Components
