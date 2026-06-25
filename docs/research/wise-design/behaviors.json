@@ -1,0 +1,64 @@
+{
+  "captured": "2026-06-25",
+  "source": "https://wise.design/",
+  "interactions": [
+    {
+      "id": "carousel-card-hover",
+      "trigger": "mouseenter on [data-asset-index] card",
+      "effects": [
+        "Carousel pauses (animation-play-state: paused on hover)",
+        "Media expands 120×120 → 480×480px",
+        "Border radius 64px → 48px",
+        "Container height 120 → 480px",
+        "z-index raised on active card",
+        "Metadata panel reveals: title (h3), description, tag pills"
+      ],
+      "before": { "mediaW": 120, "mediaH": 120, "radius": "64px" },
+      "after": { "mediaW": 480, "mediaH": 480, "radius": "48px" },
+      "dataAttributes": [
+        "data-asset-index",
+        "data-asset-title",
+        "data-asset-description",
+        "data-asset-active"
+      ],
+      "gsapBuild": {
+        "expand": { "duration": 0.45, "ease": "power2.out" },
+        "collapse": { "duration": 0.4, "ease": "power2.inOut" },
+        "metaReveal": { "duration": 0.35, "delay": 0.1 }
+      }
+    },
+    {
+      "id": "carousel-pause-button",
+      "trigger": "click pause-carousel button",
+      "effects": ["Toggles auto-scroll"]
+    },
+    {
+      "id": "inspiration-direction-toggle",
+      "trigger": "click Inspiration / Direction",
+      "effects": ["Navigates between site sections"]
+    }
+  ],
+  "hoverCss": [":hover div{animation-play-state:var(--pause-on-hover)}"],
+  "scrollSpeed": { "pxPerSecond": 60, "easing": "linear" },
+  "cyclingCopy": {
+    "selector": ".vertical-text-rotator",
+    "intervalMs": 2500,
+    "slideMs": 300,
+    "lines": [
+      "Designed by Wise",
+      "ワイズによるデザイン",
+      "Проектиран от Wise",
+      "와이즈가 디자인한",
+      "Được thiết kế bởi khôn ngoan",
+      "Ginawa para sa mundo",
+      "Air a dhealbhadh le Wise",
+      "Ontworpen door Wise"
+    ]
+  },
+  "hoverSmoothness": {
+    "singleActiveCard": true,
+    "killTweensOnSwitch": true,
+    "marqueeResumeDelayMs": 80,
+    "test": "rapid-hover across 6 cards — zero stuck expanded"
+  }
+}

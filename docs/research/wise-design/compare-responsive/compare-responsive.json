@@ -1,0 +1,300 @@
+{
+  "captured": "2026-06-25T12:14:03.306Z",
+  "referenceUrl": "https://wise.design",
+  "cloneUrl": "http://localhost:3002/wise",
+  "viewports": [
+    {
+      "id": "mobile-375",
+      "label": "mobile",
+      "reference": {
+        "screenshot": "../docs/research/wise-design/compare-responsive/reference-mobile-375.png",
+        "metrics": {
+          "carouselAxis": "vertical",
+          "visibleCards": 5,
+          "avgCardWidth": 124,
+          "chrome": {
+            "logo": {
+              "w": 40,
+              "h": 40,
+              "x": 16,
+              "y": 18
+            },
+            "hasIconToggle": true,
+            "hasTextToggle": false,
+            "hasDocsLink": true,
+            "globe": {
+              "w": 40,
+              "h": 40,
+              "x": 146,
+              "y": 18
+            },
+            "direction": {
+              "w": 40,
+              "h": 40,
+              "x": 190,
+              "y": 18
+            },
+            "docs": {
+              "w": 95,
+              "h": 44,
+              "x": 264,
+              "y": 16
+            },
+            "pause": {
+              "w": 375,
+              "h": 812,
+              "x": 0,
+              "y": 0
+            }
+          }
+        }
+      },
+      "clone": {
+        "screenshot": "../docs/research/wise-design/compare-responsive/clone-mobile-375.png",
+        "metrics": {
+          "carouselAxis": "vertical",
+          "visibleCards": 8,
+          "avgCardWidth": 124,
+          "chrome": {
+            "logo": {
+              "w": 40,
+              "h": 40,
+              "x": 16,
+              "y": 18
+            },
+            "hasIconToggle": true,
+            "hasTextToggle": false,
+            "hasDocsLink": true,
+            "globe": {
+              "w": 40,
+              "h": 40,
+              "x": 146,
+              "y": 18
+            },
+            "direction": {
+              "w": 40,
+              "h": 40,
+              "x": 190,
+              "y": 18
+            },
+            "docs": {
+              "w": 80,
+              "h": 44,
+              "x": 279,
+              "y": 16
+            },
+            "pause": null
+          }
+        }
+      },
+      "checks": [
+        {
+          "id": "mobile-carousel-axis",
+          "pass": true,
+          "ref": "vertical",
+          "clone": "vertical"
+        },
+        {
+          "id": "mobile-icon-toggle",
+          "pass": true,
+          "ref": true,
+          "clone": true,
+          "note": "Mobile header needs globe + direction icon buttons"
+        },
+        {
+          "id": "mobile-docs-link",
+          "pass": true,
+          "ref": true,
+          "clone": true,
+          "note": "Mobile header needs Docs pill linking to docs.wise.design"
+        },
+        {
+          "id": "mobile-no-text-toggle",
+          "pass": true,
+          "ref": false,
+          "clone": false,
+          "note": "Mobile should use icons not desktop text toggle"
+        },
+        {
+          "id": "mobile-logo-size",
+          "pass": true,
+          "ref": {
+            "w": 40,
+            "h": 40,
+            "x": 16,
+            "y": 18
+          },
+          "clone": {
+            "w": 40,
+            "h": 40,
+            "x": 16,
+            "y": 18
+          }
+        }
+      ]
+    },
+    {
+      "id": "desktop-1920",
+      "label": "desktop",
+      "reference": {
+        "screenshot": "../docs/research/wise-design/compare-responsive/reference-desktop-1920.png",
+        "metrics": {
+          "carouselAxis": "horizontal",
+          "visibleCards": 13,
+          "avgCardWidth": 153,
+          "chrome": {
+            "logo": null,
+            "hasIconToggle": false,
+            "hasTextToggle": true,
+            "hasDocsLink": false,
+            "globe": null,
+            "direction": null,
+            "docs": null,
+            "pause": {
+              "w": 1920,
+              "h": 420,
+              "x": -2,
+              "y": 330
+            }
+          }
+        }
+      },
+      "clone": {
+        "screenshot": "../docs/research/wise-design/compare-responsive/clone-desktop-1920.png",
+        "metrics": {
+          "carouselAxis": "horizontal",
+          "visibleCards": 14,
+          "avgCardWidth": 147,
+          "chrome": {
+            "logo": {
+              "w": 40,
+              "h": 40,
+              "x": 32,
+              "y": 28
+            },
+            "hasIconToggle": false,
+            "hasTextToggle": true,
+            "hasDocsLink": false,
+            "globe": null,
+            "direction": null,
+            "docs": null,
+            "pause": {
+              "w": 44,
+              "h": 44,
+              "x": 1844,
+              "y": 26
+            }
+          }
+        }
+      },
+      "checks": [
+        {
+          "id": "desktop-carousel-axis",
+          "pass": true,
+          "ref": "horizontal",
+          "clone": "horizontal"
+        },
+        {
+          "id": "desktop-text-toggle",
+          "pass": true,
+          "ref": true,
+          "clone": true
+        },
+        {
+          "id": "desktop-pause-visible",
+          "pass": true,
+          "ref": {
+            "w": 1920,
+            "h": 420,
+            "x": -2,
+            "y": 330
+          },
+          "clone": {
+            "w": 44,
+            "h": 44,
+            "x": 1844,
+            "y": 26
+          }
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "mobile-carousel-axis",
+      "pass": true,
+      "ref": "vertical",
+      "clone": "vertical"
+    },
+    {
+      "id": "mobile-icon-toggle",
+      "pass": true,
+      "ref": true,
+      "clone": true,
+      "note": "Mobile header needs globe + direction icon buttons"
+    },
+    {
+      "id": "mobile-docs-link",
+      "pass": true,
+      "ref": true,
+      "clone": true,
+      "note": "Mobile header needs Docs pill linking to docs.wise.design"
+    },
+    {
+      "id": "mobile-no-text-toggle",
+      "pass": true,
+      "ref": false,
+      "clone": false,
+      "note": "Mobile should use icons not desktop text toggle"
+    },
+    {
+      "id": "mobile-logo-size",
+      "pass": true,
+      "ref": {
+        "w": 40,
+        "h": 40,
+        "x": 16,
+        "y": 18
+      },
+      "clone": {
+        "w": 40,
+        "h": 40,
+        "x": 16,
+        "y": 18
+      }
+    },
+    {
+      "id": "desktop-carousel-axis",
+      "pass": true,
+      "ref": "horizontal",
+      "clone": "horizontal"
+    },
+    {
+      "id": "desktop-text-toggle",
+      "pass": true,
+      "ref": true,
+      "clone": true
+    },
+    {
+      "id": "desktop-pause-visible",
+      "pass": true,
+      "ref": {
+        "w": 1920,
+        "h": 420,
+        "x": -2,
+        "y": 330
+      },
+      "clone": {
+        "w": 44,
+        "h": 44,
+        "x": 1844,
+        "y": 26
+      }
+    }
+  ],
+  "pass": true,
+  "notes": [
+    "Run after implementing mobile layout when responsive.json gates.axisDiffers is true.",
+    "Review reference-* and clone-* PNGs side-by-side per viewport."
+  ]
+}

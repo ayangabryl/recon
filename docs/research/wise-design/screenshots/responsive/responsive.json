@@ -1,0 +1,270 @@
+{
+  "captured": "2026-06-25T12:01:58.521Z",
+  "url": "https://wise.design",
+  "viewports": [
+    {
+      "id": "mobile-375",
+      "label": "mobile",
+      "width": 375,
+      "height": 812,
+      "screenshot": "mobile-375-viewport.png",
+      "audit": {
+        "viewport": {
+          "w": 375,
+          "h": 812
+        },
+        "scrollHeight": 812,
+        "overflowX": "hidden",
+        "figmaBreakpoints": [
+          {
+            "id": "node-537_18296",
+            "designWidth": "375",
+            "display": "block",
+            "visible": true,
+            "w": 375,
+            "h": 812
+          }
+        ],
+        "dualBreakpointHtml": false,
+        "carousel": {
+          "axis": "vertical",
+          "visibleCount": 5,
+          "sampleCards": [
+            {
+              "w": 124,
+              "h": 70,
+              "x": 126,
+              "y": 371
+            },
+            {
+              "w": 124,
+              "h": 124,
+              "x": 126,
+              "y": 441
+            },
+            {
+              "w": 124,
+              "h": 93,
+              "x": 126,
+              "y": 565
+            },
+            {
+              "w": 124,
+              "h": 124,
+              "x": 126,
+              "y": 658
+            }
+          ],
+          "avgWidth": 124
+        },
+        "chrome": {
+          "hasToggle": false,
+          "toggle": null,
+          "logo": {
+            "w": 40,
+            "h": 40,
+            "x": 16,
+            "y": 18,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "pause": {
+            "w": 375,
+            "h": 812,
+            "x": 0,
+            "y": 0,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "attribution": {
+            "w": 375,
+            "h": 812,
+            "x": 0,
+            "y": 0,
+            "display": "block",
+            "fontSize": "16px"
+          }
+        },
+        "videoCount": 13
+      }
+    },
+    {
+      "id": "tablet-800",
+      "label": "tablet",
+      "width": 800,
+      "height": 600,
+      "screenshot": "tablet-800-viewport.png",
+      "audit": {
+        "viewport": {
+          "w": 800,
+          "h": 600
+        },
+        "scrollHeight": 600,
+        "overflowX": "hidden",
+        "figmaBreakpoints": [
+          {
+            "id": "node-537_18253",
+            "designWidth": "800",
+            "display": "block",
+            "visible": true,
+            "w": 800,
+            "h": 800
+          }
+        ],
+        "dualBreakpointHtml": false,
+        "carousel": {
+          "axis": "horizontal",
+          "visibleCount": 5,
+          "sampleCards": [
+            {
+              "w": 213,
+              "h": 120,
+              "x": 512,
+              "y": 240
+            },
+            {
+              "w": 120,
+              "h": 120,
+              "x": 392,
+              "y": 240
+            },
+            {
+              "w": 160,
+              "h": 120,
+              "x": 232,
+              "y": 240
+            },
+            {
+              "w": 120,
+              "h": 120,
+              "x": 112,
+              "y": 240
+            }
+          ],
+          "avgWidth": 142
+        },
+        "chrome": {
+          "hasToggle": true,
+          "toggle": {
+            "w": 80,
+            "h": 24,
+            "x": 300,
+            "y": 42,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "logo": null,
+          "pause": {
+            "w": 800,
+            "h": 420,
+            "x": -39,
+            "y": 90,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "attribution": {
+            "w": 800,
+            "h": 800,
+            "x": 0,
+            "y": 0,
+            "display": "block",
+            "fontSize": "16px"
+          }
+        },
+        "videoCount": 14
+      }
+    },
+    {
+      "id": "desktop-1920",
+      "label": "desktop",
+      "width": 1920,
+      "height": 1080,
+      "screenshot": "desktop-1920-viewport.png",
+      "audit": {
+        "viewport": {
+          "w": 1920,
+          "h": 1080
+        },
+        "scrollHeight": 1080,
+        "overflowX": "hidden",
+        "figmaBreakpoints": [
+          {
+            "id": "node-537_18253",
+            "designWidth": "800",
+            "display": "block",
+            "visible": true,
+            "w": 1920,
+            "h": 1080
+          }
+        ],
+        "dualBreakpointHtml": false,
+        "carousel": {
+          "axis": "horizontal",
+          "visibleCount": 12,
+          "sampleCards": [
+            {
+              "w": 213,
+              "h": 120,
+              "x": 1596,
+              "y": 480
+            },
+            {
+              "w": 120,
+              "h": 120,
+              "x": 1476,
+              "y": 480
+            },
+            {
+              "w": 160,
+              "h": 120,
+              "x": 1316,
+              "y": 480
+            },
+            {
+              "w": 120,
+              "h": 120,
+              "x": 1196,
+              "y": 480
+            }
+          ],
+          "avgWidth": 153
+        },
+        "chrome": {
+          "hasToggle": true,
+          "toggle": {
+            "w": 80,
+            "h": 24,
+            "x": 860,
+            "y": 42,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "logo": null,
+          "pause": {
+            "w": 1920,
+            "h": 420,
+            "x": -77,
+            "y": 330,
+            "display": "flex",
+            "fontSize": "16px"
+          },
+          "attribution": {
+            "w": 1920,
+            "h": 1080,
+            "x": 0,
+            "y": 0,
+            "display": "block",
+            "fontSize": "16px"
+          }
+        },
+        "videoCount": 14
+      }
+    }
+  ],
+  "strategy": "Carousel: horizontal (desktop) → vertical (mobile); Toggle: visible desktop, hidden mobile; Figma: separate breakpoint trees in HTML — not CSS-only reflow",
+  "gates": {
+    "mobileCaptured": true,
+    "desktopCaptured": true,
+    "axisDiffers": true
+  }
+}

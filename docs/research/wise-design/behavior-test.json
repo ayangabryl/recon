@@ -1,0 +1,200 @@
+{
+  "captured": "2026-06-25T11:17:36.797Z",
+  "referenceUrl": "https://wise.design/",
+  "cloneUrl": "http://localhost:3002/wise",
+  "reference": {
+    "label": "reference",
+    "url": "https://wise.design/",
+    "chrome": {
+      "logo": {
+        "w": 40,
+        "h": 40,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "6.67px"
+      },
+      "pause": {
+        "w": 44,
+        "h": 44,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "progress": {
+        "w": 1920,
+        "h": 1080,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "progressThumb": {
+        "w": 1920,
+        "h": 1080,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "visibleCards": 7,
+      "avgCardWidth": 146
+    },
+    "hover": {
+      "w": 480,
+      "h": 480
+    },
+    "rapidHover": {
+      "expandedCount": 0,
+      "stuckMetaPanels": 0
+    },
+    "rotatorTexts": [
+      "ワイズによるデザイン",
+      "Designed by Wise",
+      "Designed by WiseПроектиран от Wise",
+      "Проектиран от Wise"
+    ]
+  },
+  "clone": {
+    "label": "clone",
+    "url": "http://localhost:3002/wise",
+    "chrome": {
+      "logo": {
+        "w": 40,
+        "h": 40,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "6.67px"
+      },
+      "pause": {
+        "w": 44,
+        "h": 44,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "progress": {
+        "w": 160,
+        "h": 9,
+        "bg": "oklab(0 0 0 / 0.08)",
+        "borderRadius": "3.35544e+07px"
+      },
+      "progressThumb": {
+        "w": 63,
+        "h": 9,
+        "bg": "rgb(31, 41, 55)",
+        "borderRadius": "3.35544e+07px"
+      },
+      "visibleCards": 12,
+      "avgCardWidth": 140
+    },
+    "hover": {
+      "w": 384,
+      "h": 480
+    },
+    "rapidHover": {
+      "expandedCount": 0,
+      "stuckMetaPanels": 0
+    },
+    "rotatorTexts": [
+      "ワイズによるデザイン",
+      "Проектиран от Wise",
+      "와이즈가 디자인한"
+    ]
+  },
+  "checks": [
+    {
+      "id": "visible-cards",
+      "pass": true,
+      "ref": 7,
+      "clone": 12
+    },
+    {
+      "id": "avg-card-width",
+      "pass": true,
+      "ref": 146,
+      "clone": 140
+    },
+    {
+      "id": "logo-size",
+      "pass": true,
+      "ref": {
+        "w": 40,
+        "h": 40,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "6.67px"
+      },
+      "clone": {
+        "w": 40,
+        "h": 40,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "6.67px"
+      }
+    },
+    {
+      "id": "pause-size",
+      "pass": true,
+      "ref": {
+        "w": 44,
+        "h": 44,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "clone": {
+        "w": 44,
+        "h": 44,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      }
+    },
+    {
+      "id": "progress-track",
+      "pass": true,
+      "ref": {
+        "w": 1920,
+        "h": 1080,
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "clone": {
+        "w": 160,
+        "h": 9,
+        "bg": "oklab(0 0 0 / 0.08)",
+        "borderRadius": "3.35544e+07px"
+      }
+    },
+    {
+      "id": "hover-expand-height",
+      "pass": true,
+      "ref": {
+        "w": 480,
+        "h": 480
+      },
+      "clone": {
+        "w": 384,
+        "h": 480
+      }
+    },
+    {
+      "id": "footer-text-rotator",
+      "pass": true,
+      "ref": [
+        "ワイズによるデザイン",
+        "Designed by Wise",
+        "Designed by WiseПроектиран от Wise",
+        "Проектиран от Wise"
+      ],
+      "clone": [
+        "ワイズによるデザイン",
+        "Проектиран от Wise",
+        "와이즈가 디자인한"
+      ],
+      "note": "Reference cycles footer/attribution copy — clone must too"
+    },
+    {
+      "id": "rapid-hover-no-stuck",
+      "pass": true,
+      "ref": {
+        "expandedCount": 0,
+        "stuckMetaPanels": 0
+      },
+      "clone": {
+        "expandedCount": 0,
+        "stuckMetaPanels": 0
+      },
+      "note": "After fast hover across cards, none should stay expanded"
+    }
+  ],
+  "pass": true
+}
